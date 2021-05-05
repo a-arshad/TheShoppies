@@ -1,12 +1,18 @@
+import { StackNavigationProp } from '@react-navigation/stack';
 import _ from 'lodash';
 import React, {useEffect, useState} from 'react';
-import IMovieSummary from '~/src/models/movieSummary';
+import MovieSummary from 'src/models/movieSummary';
 import {searchMovies} from 'src/util/movieEndpoint';
+import { RootStackParamList, ScreenName } from 'src/util/screens';
 import SearchScreenView from './SearchScreenView';
 
-const SearchScreenController = () => {
+interface SearchScreenControllerProps {
+  navigation: StackNavigationProp<RootStackParamList, ScreenName.SEARCH>;
+}
+
+const SearchScreenController = (props: SearchScreenControllerProps) => {
   const [searchTerm, setSearchTerm] = useState<string>('');
-  const [searchResults, setSearchResults] = useState<IMovieSummary[]>([]);
+  const [searchResults, setSearchResults] = useState<MovieSummary[]>([]);
   const [page, setPage] = useState<number>(1);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isRefreshing, setIsRefreshing] = useState<boolean>(false);
@@ -38,13 +44,7 @@ const SearchScreenController = () => {
       searchMovies(searchTerm, page)
         .then(newSearchResults => {
           setErrorMessage('');
-          if (page > 1) {
-            setSearchResults(
-              _.uniqBy([...searchResults, ...newSearchResults], 'imdbID'),
-            );
-          } else {
-            setSearchResults(newSearchResults);
-          }
+          addSearchResults(newSearchResults);
         })
         .catch(resp => {
           setSearchResults([]);
@@ -62,6 +62,23 @@ const SearchScreenController = () => {
     }
   };
 
+  const addSearchResults = (newSearchResults: MovieSummary[]) => {
+    if (page > 1) {
+      newSearchResults = _.uniqBy(
+        [...searchResults, ...newSearchResults],
+        'imdbID',
+      );
+    }
+
+    newSearchResults = newSearchResults.map(searchResult => {
+      return searchResult;
+    });
+
+    setSearchResults(newSearchResults);
+  };
+
+  const onBack = () => props.navigation.goBack()
+
   return (
     <SearchScreenView
       searchResults={searchResults}
@@ -73,7 +90,7 @@ const SearchScreenController = () => {
       loadNextPage={loadNextPage}
       onRefresh={onRefresh}
       onSearchResultSelect={() => null}
-      onBack={() => null}
+      onBack={onBack}
     />
   );
 };

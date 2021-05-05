@@ -1,13 +1,13 @@
 import React from 'react';
 import {Text, View, TouchableHighlight} from 'react-native';
 import SearchBar from 'src/components/SearchBar/SearchBar';
-import IMovieSummary from '~/src/models/movieSummary';
+import MovieSummary from 'src/models/movieSummary';
 import {theme} from 'src/util/themes';
 import useStyles from './SearchScreen.modules';
 import MovieList from 'src/components/MovieList/MovieList';
 
 interface SearchScreenViewProps {
-  searchResults: IMovieSummary[];
+  searchResults: MovieSummary[];
   isLoading: boolean;
   isRefreshing: boolean;
   errorMessage: string;

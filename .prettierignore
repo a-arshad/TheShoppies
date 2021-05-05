@@ -1,0 +1,5 @@
+# Ignore build folders:
+.gradle
+node_modules
+android
+ios

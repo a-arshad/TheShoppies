@@ -2,13 +2,13 @@ import {faMinusCircle, faPlusCircle} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import React from 'react';
 import {Text, View, Image, TouchableOpacity} from 'react-native';
-import IMovieSummary from '~/src/models/movieSummary';
+import MovieSummary from 'src/models/movieSummary';
 import {theme} from 'src/util/themes';
 import useStyles from './MovieItem.modules';
 
 interface MovieItemProps {
-  movieSummary: IMovieSummary;
-  onSelect: (moveSummary: IMovieSummary) => void;
+  movieSummary: MovieSummary;
+  onSelect: (moveSummary: MovieSummary) => void;
 }
 
 const MovieItem = (props: MovieItemProps) => {

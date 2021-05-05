@@ -1,4 +1,4 @@
-import IMovieSummary from '~/src/models/movieSummary';
+import MovieSummary from 'src/models/movieSummary';
 // TODO: hide the api key in a .env file
 const API_URL = `http://www.omdbapi.com/?apikey=4e29ebc&type=movie`;
 
@@ -38,17 +38,20 @@ const moviesFetch = async (urlParams: string) =>
 export const searchMovies = async (
   searchTerm: string,
   page: number,
-): Promise<IMovieSummary[]> =>
+): Promise<MovieSummary[]> =>
   moviesFetch(`s=${searchTerm}&page=${page}`).then(
     (movieSearchResponse: IMovieSearchResponse) => {
       if (movieSearchResponse.Response.toLowerCase() == 'true') {
-        return movieSearchResponse.Search.map(searchResult => ({
-          imdbID: searchResult.imdbID,
-          title: searchResult.Title,
-          year: searchResult.Year,
-          poster: searchResult.Poster,
-          nominated: false,
-        }));
+        return movieSearchResponse.Search.map(
+          searchResult =>
+            new MovieSummary(
+              searchResult.imdbID,
+              searchResult.Title,
+              searchResult.Year,
+              searchResult.Poster,
+              false,
+            ),
+        );
       } else {
         throw Error(movieSearchResponse.Error);
       }
