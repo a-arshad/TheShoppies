@@ -1,4 +1,4 @@
-import IMovieSummary from 'src/models/movieDetail';
+import IMovieSummary from '~/src/models/movieSummary';
 // TODO: hide the api key in a .env file
 const API_URL = `http://www.omdbapi.com/?apikey=4e29ebc&type=movie`;
 
@@ -47,6 +47,7 @@ export const searchMovies = async (
           title: searchResult.Title,
           year: searchResult.Year,
           poster: searchResult.Poster,
+          nominated: false,
         }));
       } else {
         throw Error(movieSearchResponse.Error);

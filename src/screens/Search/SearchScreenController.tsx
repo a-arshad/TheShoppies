@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import React, {useEffect, useState} from 'react';
-import IMovieSummary from 'src/models/movieDetail';
+import IMovieSummary from '~/src/models/movieSummary';
 import {searchMovies} from 'src/util/movieEndpoint';
 import SearchScreenView from './SearchScreenView';
 

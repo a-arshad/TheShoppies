@@ -6,7 +6,7 @@ import {
   View,
   VirtualizedListWithoutRenderItemProps,
 } from 'react-native';
-import MovieItem from 'src/components/SearchResult/SearchResult';
+import MovieItem from 'src/components/MovieItem/MovieItem';
 import Divider from 'src/components/Divider/Divider';
 import useStyles from './MovieList.modules';
 

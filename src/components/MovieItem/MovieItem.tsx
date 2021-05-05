@@ -1,10 +1,10 @@
-import {faPlusCircle} from '@fortawesome/free-solid-svg-icons';
+import {faMinusCircle, faPlusCircle} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import React from 'react';
-import {Text, View, Image} from 'react-native';
-import IMovieSummary from 'src/models/movieDetail';
+import {Text, View, Image, TouchableOpacity} from 'react-native';
+import IMovieSummary from '~/src/models/movieSummary';
 import {theme} from 'src/util/themes';
-import useStyles from './SearchResult.modules';
+import useStyles from './MovieItem.modules';
 
 interface MovieItemProps {
   movieSummary: IMovieSummary;
@@ -32,11 +32,13 @@ const MovieItem = (props: MovieItemProps) => {
           {props.movieSummary.year}
         </Text>
       </View>
-      <FontAwesomeIcon
-        color={theme.grey}
-        size={theme.iconSizeRegular}
-        icon={faPlusCircle}
-      />
+      <TouchableOpacity onPress={() => props.onSelect}>
+        <FontAwesomeIcon
+          color={theme.grey}
+          size={theme.iconSizeRegular}
+          icon={props.movieSummary.nominated ? faMinusCircle : faPlusCircle}
+        />
+      </TouchableOpacity>
     </View>
   );
 };
