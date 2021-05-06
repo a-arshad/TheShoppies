@@ -1,9 +1,10 @@
-import { StackNavigationProp } from '@react-navigation/stack';
+import {StackNavigationProp} from '@react-navigation/stack';
 import _ from 'lodash';
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import MovieSummary from 'src/models/movieSummary';
-import {searchMovies} from 'src/util/movieEndpoint';
-import { RootStackParamList, ScreenName } from 'src/util/screens';
+import {searchMovies} from 'src/util/moviesGateway';
+import {RootStackParamList, ScreenName} from 'src/util/screens';
+import context from 'src/util/context';
 import SearchScreenView from './SearchScreenView';
 
 interface SearchScreenControllerProps {
@@ -18,13 +19,20 @@ const SearchScreenController = (props: SearchScreenControllerProps) => {
   const [isRefreshing, setIsRefreshing] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>('');
 
-  useEffect(() => {
+  const {nominations: nomiations} = useContext(context);
+
+  useEffect(() => {    
     search();
   }, [page, searchTerm]);
 
   const onRefresh = () => {
-    setPage(1);
     setIsRefreshing(true);
+    // useEffect doesn't get called if setPage doesn't change the value of page (when page === 1)
+    if (page === 1) {
+      search();
+    } else {
+      setPage(1);
+    }
   };
 
   const onNewSearch = (newSearchTerm: string) => {
@@ -41,7 +49,7 @@ const SearchScreenController = (props: SearchScreenControllerProps) => {
   const search = async () => {
     if (searchTerm) {
       setIsLoading(true);
-      searchMovies(searchTerm, page)
+      searchMovies(searchTerm, page, nomiations)
         .then(newSearchResults => {
           setErrorMessage('');
           addSearchResults(newSearchResults);
@@ -64,9 +72,9 @@ const SearchScreenController = (props: SearchScreenControllerProps) => {
 
   const addSearchResults = (newSearchResults: MovieSummary[]) => {
     if (page > 1) {
-      newSearchResults = _.uniqBy(
+      newSearchResults = _.uniqWith(
         [...searchResults, ...newSearchResults],
-        'imdbID',
+        (a, b) => a.id === b.id,
       );
     }
 
@@ -77,7 +85,7 @@ const SearchScreenController = (props: SearchScreenControllerProps) => {
     setSearchResults(newSearchResults);
   };
 
-  const onBack = () => props.navigation.goBack()
+  const onBack = () => props.navigation.goBack();
 
   return (
     <SearchScreenView
@@ -89,7 +97,6 @@ const SearchScreenController = (props: SearchScreenControllerProps) => {
       onSearch={onNewSearch}
       loadNextPage={loadNextPage}
       onRefresh={onRefresh}
-      onSearchResultSelect={() => null}
       onBack={onBack}
     />
   );

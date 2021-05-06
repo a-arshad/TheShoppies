@@ -1,23 +1,22 @@
 import {faMinusCircle, faPlusCircle} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import React from 'react';
+import React, {useContext} from 'react';
 import {Text, View, Image, TouchableOpacity} from 'react-native';
 import MovieSummary from 'src/models/movieSummary';
 import {theme} from 'src/util/themes';
+import context from 'src/util/context';
 import useStyles from './MovieItem.modules';
 
 interface MovieItemProps {
   movieSummary: MovieSummary;
-  onSelect: (moveSummary: MovieSummary) => void;
 }
 
 const MovieItem = (props: MovieItemProps) => {
+  const {nominations} = useContext(context);
   const styles = useStyles();
 
   return (
-    <View
-      style={styles.container}
-      onTouchStart={() => props.onSelect(props.movieSummary)}>
+    <View style={styles.container}>
       <Image
         style={styles.poster}
         source={{
@@ -32,11 +31,12 @@ const MovieItem = (props: MovieItemProps) => {
           {props.movieSummary.year}
         </Text>
       </View>
-      <TouchableOpacity onPress={() => props.onSelect}>
+      <TouchableOpacity
+        onPress={() => nominations.toggleNomination(props.movieSummary)}>
         <FontAwesomeIcon
           color={theme.grey}
           size={theme.iconSizeRegular}
-          icon={props.movieSummary.nominated ? faMinusCircle : faPlusCircle}
+          icon={nominations.isNominated(props.movieSummary.id) ? faMinusCircle : faPlusCircle}
         />
       </TouchableOpacity>
     </View>

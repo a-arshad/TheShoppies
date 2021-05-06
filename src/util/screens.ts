@@ -1,5 +1,7 @@
 import NominationsScreenController from 'src/screens/Nominations/NominationsScreenController';
-import SearchScreenController from 'src/screens/Search/SearchScreenController';
+import SearchScreenController, {
+  SearchScreenProps,
+} from 'src/screens/Search/SearchScreenController';
 
 export enum ScreenName {
   NOMINATIONS = 'Nominations',

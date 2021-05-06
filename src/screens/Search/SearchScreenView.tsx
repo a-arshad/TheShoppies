@@ -15,7 +15,6 @@ interface SearchScreenViewProps {
   onSearch: (searchTerm: string) => void;
   loadNextPage: () => void;
   onRefresh: () => void;
-  onSearchResultSelect: () => void;
   onBack: () => void;
 }
 
@@ -43,9 +42,8 @@ const SearchScreenView = (props: SearchScreenViewProps) => {
         page={props.page}
         refreshing={props.isRefreshing}
         errorMessage={props.errorMessage}
-        keyExtractor={searchResult => searchResult.imdbID}
+        keyExtractor={(searchResult: MovieSummary) => searchResult.id}
         onRefresh={props.onRefresh}
-        onMovieSelect={props.onSearchResultSelect}
         onEndReached={props.loadNextPage}
         onEndReachedThreshold={0.7}
       />

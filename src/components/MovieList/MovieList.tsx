@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {
   FlatList,
   RefreshControl,
@@ -15,7 +15,6 @@ interface MovieListProps extends VirtualizedListWithoutRenderItemProps<any> {
   page?: number;
   refreshing: boolean;
   onRefresh: () => void;
-  onMovieSelect: () => void;
 }
 
 const MovieList = (props: MovieListProps) => {
@@ -41,9 +40,7 @@ const MovieList = (props: MovieListProps) => {
               onRefresh={props.onRefresh}
             />
           }
-          renderItem={({item}) => (
-            <MovieItem movieSummary={item} onSelect={props.onMovieSelect} />
-          )}
+          renderItem={({item}) => <MovieItem movieSummary={item} />}
           {...props}
         />
       )}

@@ -1,26 +1,26 @@
 class MovieSummary {
+  id: Readonly<string>;
   title: Readonly<String>;
   year: Readonly<string>;
-  imdbID: Readonly<string>;
   poster: Readonly<string>;
   nominated: boolean;
 
   constructor(
-    imdbID: string,
+    id: string,
     title: string,
     year: string,
     poster: string,
     nominated: boolean,
   ) {
+    this.id = id;
     this.title = title;
     this.year = year;
-    this.imdbID = imdbID;
     this.poster = poster;
     this.nominated = nominated;
   }
 
-  eq(o: MovieSummary) {
-    this.imdbID === o.imdbID;
+  equals(o: MovieSummary) {
+    this.id === o.id;
   }
 }
 
