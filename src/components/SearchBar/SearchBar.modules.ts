@@ -6,25 +6,26 @@ const useStyles = () =>
     container: {
       borderWidth: 1,
       borderRadius: 90,
-      borderColor: theme.lightGrey,
-      backgroundColor: theme.lightGrey,
+      borderColor: theme.colors.lightGrey,
+      backgroundColor: theme.colors.lightGrey,
     },
     searchField: {
       display: 'flex',
       flexDirection: 'row',
       alignItems: 'center',
-      marginHorizontal: 5,
-      paddingLeft: 5,
-      paddingRight: 10,
+      marginHorizontal: theme.spacing.extraTight,
+      paddingVertical: theme.spacing.extraTight,
+      paddingLeft: theme.spacing.extraTight,
+      paddingRight: theme.spacing.tight,
       width: '100%',
     },
     searchIcon: {
-      marginHorizontal: 5,
+      marginHorizontal: theme.spacing.tight,
     },
     textInput: {
       flexShrink: 1,
       color: 'black',
-      fontSize: theme.fontSizeRegular,
+      fontSize: theme.font.fontSizeRegular,
       width: '100%',
     },
   });

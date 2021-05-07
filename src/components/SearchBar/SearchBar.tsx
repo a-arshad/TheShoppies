@@ -1,7 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import {TextInput, TextInputProps, TouchableOpacity, View} from 'react-native';
-import {faSearch, faTimesCircle} from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {CircleCancelMajor, SearchMajor} from 'src/components/Icons/PolarisIcon';
 import useStyles from './SearchBar.modules';
 import {theme} from 'src/util/themes';
 import {debounce} from 'lodash';
@@ -33,27 +32,17 @@ const SearchBar = (props: TextInputProps) => {
   return (
     <View style={styles.container}>
       <View style={styles.searchField}>
-        <FontAwesomeIcon
-          style={styles.searchIcon}
-          color={theme.grey}
-          size={theme.iconSizeRegular}
-          icon={faSearch}
-        />
+        <SearchMajor style={styles.searchIcon} />
         <TextInput
           ref={textInput => setTextInput(textInput)}
           style={styles.textInput}
-          placeholderTextColor={theme.grey}
+          placeholderTextColor={theme.colors.darkGrey}
           {...props}
           onChangeText={onChangeText}
         />
         {searchTerm ? (
-          <TouchableOpacity onPress={clearText}>
-            <FontAwesomeIcon
-              style={styles.searchIcon}
-              color={theme.grey}
-              size={theme.iconSizeRegular}
-              icon={faTimesCircle}
-            />
+          <TouchableOpacity style={styles.searchIcon} onPress={clearText}>
+            <CircleCancelMajor />
           </TouchableOpacity>
         ) : null}
       </View>

@@ -1,15 +1,15 @@
 import {StyleSheet} from 'react-native';
+import {theme} from 'src/util/themes';
 
 const useStyles = () =>
   StyleSheet.create({
     container: {
       display: 'flex',
       flexDirection: 'column',
-      margin: 15,
+      backgroundColor: 'white',
     },
     topBar: {
-      marginTop: 10,
-      marginBottom: 10,
+      marginVertical: theme.spacing.tight,
       display: 'flex',
       flexDirection: 'row',
       alignItems: 'center',
@@ -18,16 +18,17 @@ const useStyles = () =>
       flex: 4,
     },
     cancelButton: {
-      flex: 1,
-      height: '70%',
-      paddingTop: 5,
-      paddingBottom: 5,
-      borderRadius: 5,
-      marginRight: 5,
-      marginLeft: 5,
+      flexShrink: 1,
+      flexDirection: 'row',
+      paddingVertical: theme.spacing.extraTight,
+      marginHorizontal: theme.spacing.extraTight,
+      paddingHorizontal: theme.spacing.extraTight,
+      borderRadius: theme.spacing.extraTight,
+      justifyContent: 'center',
     },
     cancelText: {
-      flex: 1,
+      flexShrink: 1,
+      color: theme.colors.primary,
       textAlign: 'center',
       textAlignVertical: 'center',
     },

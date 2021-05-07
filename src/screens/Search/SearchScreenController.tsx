@@ -21,7 +21,7 @@ const SearchScreenController = (props: SearchScreenControllerProps) => {
 
   const {nominations: nomiations} = useContext(context);
 
-  useEffect(() => {    
+  useEffect(() => {
     search();
   }, [page, searchTerm]);
 

@@ -1,6 +1,7 @@
 import {StackNavigationProp} from '@react-navigation/stack';
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {RootStackParamList, ScreenName} from 'src/util/screens';
+import context from 'src/util/context';
 import NominationsScreenView from './NominationsScreenView';
 
 interface NominationsScreenControllerProps {
@@ -10,13 +11,16 @@ interface NominationsScreenControllerProps {
 const NominationsScreenController = (
   props: NominationsScreenControllerProps,
 ) => {
-  /*const [nominees, setNominees] = useState<Map<string, MovieSummary>>(
-    new Map<string, MovieSummary>(),
-  );*/
+  const {nominations} = useContext(context);
 
   const onSearchIconPress = () => props.navigation.navigate(ScreenName.SEARCH);
 
-  return <NominationsScreenView onSearchIconPress={onSearchIconPress} />;
+  return (
+    <NominationsScreenView
+      onSearchIconPress={onSearchIconPress}
+      nominees={[...nominations._nominees.values()]}
+    />
+  );
 };
 
 export default NominationsScreenController;

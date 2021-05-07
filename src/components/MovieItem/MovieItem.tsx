@@ -1,17 +1,21 @@
-import {faMinusCircle, faPlusCircle} from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
+import {
+  CircleMinusMajor,
+  CirclePlusMajor,
+  ImageMajor,
+} from 'src/components/Icons/PolarisIcon';
 import {Text, View, Image, TouchableOpacity} from 'react-native';
 import MovieSummary from 'src/models/movieSummary';
-import {theme} from 'src/util/themes';
 import context from 'src/util/context';
 import useStyles from './MovieItem.modules';
+import {theme} from 'src/util/themes';
 
 interface MovieItemProps {
   movieSummary: MovieSummary;
 }
 
 const MovieItem = (props: MovieItemProps) => {
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
   const {nominations} = useContext(context);
   const styles = useStyles();
 
@@ -19,13 +23,19 @@ const MovieItem = (props: MovieItemProps) => {
     <View style={styles.container}>
       <Image
         style={styles.poster}
+        onLoad={() => setIsLoaded(true)}
         source={{
           uri: props.movieSummary.poster,
         }}
       />
+      {!isLoaded ? (
+        <View style={styles.placeholderPoster}>
+          <ImageMajor fill="none" stroke={theme.colors.grey} strokeWidth={1} />
+        </View>
+      ) : null}
       <View style={styles.movieInfo}>
         <Text style={styles.title} numberOfLines={2}>
-          {props.movieSummary.title}
+          {props.movieSummary.title.toUpperCase()}
         </Text>
         <Text style={styles.year} numberOfLines={1}>
           {props.movieSummary.year}
@@ -33,11 +43,11 @@ const MovieItem = (props: MovieItemProps) => {
       </View>
       <TouchableOpacity
         onPress={() => nominations.toggleNomination(props.movieSummary)}>
-        <FontAwesomeIcon
-          color={theme.grey}
-          size={theme.iconSizeRegular}
-          icon={nominations.isNominated(props.movieSummary.id) ? faMinusCircle : faPlusCircle}
-        />
+        {nominations.isNominated(props.movieSummary.id) ? (
+          <CircleMinusMajor />
+        ) : (
+          <CirclePlusMajor />
+        )}
       </TouchableOpacity>
     </View>
   );

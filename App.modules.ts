@@ -5,8 +5,10 @@ const useStyles = () =>
   StyleSheet.create({
     theme: {
       flex: 1,
+      paddingTop: theme.spacing.base,
+      paddingHorizontal: theme.spacing.base,
       backgroundColor: 'white',
-      fontSize: theme.fontSizeRegular,
+      fontSize: theme.font.fontSizeRegular,
     },
   });
 

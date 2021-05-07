@@ -6,8 +6,8 @@ const useStyles = () =>
     line: {
       height: 1,
       width: '100%',
-      margin: 5,
-      backgroundColor: '#ededed',
+      margin: theme.spacing.extraTight,
+      backgroundColor: theme.colors.hairline,
     },
   });
 

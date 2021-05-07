@@ -1,11 +1,12 @@
-import {faSearch} from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import React from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
-import {theme} from 'src/util/themes';
+import {SearchMajor} from 'src/components/Icons/PolarisIcon';
+import MovieList from 'src/components/MovieList/MovieList';
+import MovieSummary from 'src/models/movieSummary';
 import useStyles from './Nominations.modules';
 
 interface NominantionsScreenViewProps {
+  nominees: MovieSummary[];
   onSearchIconPress: () => void;
 }
 
@@ -13,20 +14,14 @@ const NominationsScreenView = (props: NominantionsScreenViewProps) => {
   const styles = useStyles();
 
   return (
-    <View>
+    <View style={styles.container}>
       <View style={styles.topBar}>
-        <Text>The Shoppies</Text>
+        <Text style={styles.title}>The Shoppies</Text>
         <TouchableOpacity onPress={props.onSearchIconPress}>
-          <FontAwesomeIcon
-            color={theme.grey}
-            size={theme.iconSizeRegular}
-            icon={faSearch}
-          />
+          <SearchMajor />
         </TouchableOpacity>
       </View>
-      {
-        // TODO: add MovieList component here
-      }
+      <MovieList data={props.nominees} errorMessage={''} />
     </View>
   );
 };

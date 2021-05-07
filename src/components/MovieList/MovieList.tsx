@@ -11,10 +11,8 @@ import Divider from 'src/components/Divider/Divider';
 import useStyles from './MovieList.modules';
 
 interface MovieListProps extends VirtualizedListWithoutRenderItemProps<any> {
-  errorMessage: string;
+  errorMessage?: string;
   page?: number;
-  refreshing: boolean;
-  onRefresh: () => void;
 }
 
 const MovieList = (props: MovieListProps) => {
@@ -34,12 +32,6 @@ const MovieList = (props: MovieListProps) => {
           ref={flatList => setFlatList(flatList)}
           ItemSeparatorComponent={Divider}
           data={props.data}
-          refreshControl={
-            <RefreshControl
-              refreshing={props.refreshing}
-              onRefresh={props.onRefresh}
-            />
-          }
           renderItem={({item}) => <MovieItem movieSummary={item} />}
           {...props}
         />

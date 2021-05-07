@@ -34,7 +34,10 @@ const App = () => {
         <NavigationContainer>
           <stack.Navigator
             initialRouteName={ScreenName.NOMINATIONS}
-            screenOptions={{headerShown: false}}>
+            screenOptions={{
+              headerShown: false,
+              cardStyle: {backgroundColor: 'white'},
+            }}>
             {Object.values(ScreenName).map(name => (
               <stack.Screen
                 key={name}
