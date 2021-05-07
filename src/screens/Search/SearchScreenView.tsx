@@ -49,7 +49,7 @@ const SearchScreenView = (props: SearchScreenViewProps) => {
         errorMessage={props.errorMessage}
         keyExtractor={(searchResult: MovieSummary) => searchResult.id}
         onEndReached={props.loadNextPage}
-        onEndReachedThreshold={0.7}
+        onEndReachedThreshold={0.3}
       />
     </View>
   );

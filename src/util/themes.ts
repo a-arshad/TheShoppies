@@ -1,4 +1,4 @@
-// TODO: add a grey for borders, and add support for dark theme
+// TODO: add support for dark theme
 
 export const theme = {
   colors: {

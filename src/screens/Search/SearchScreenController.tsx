@@ -55,10 +55,12 @@ const SearchScreenController = (props: SearchScreenControllerProps) => {
           addSearchResults(newSearchResults);
         })
         .catch(resp => {
-          setSearchResults([]);
-          setErrorMessage(
-            resp.message ?? 'An error has occurred, please try again.',
-          );
+          if (page === 1) {
+            setSearchResults([]);
+            setErrorMessage(
+              resp.message ?? 'An error has occurred, please try again.',
+            );
+          }
         })
         .finally(() => {
           setIsLoading(false);
