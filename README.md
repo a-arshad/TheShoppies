@@ -14,14 +14,27 @@ The Shoppies is a React Native twist on the [Shopify's Fall 2021 Intern UX & Web
 
 ## Images
 
-
+<img src="https://raw.githubusercontent.com/a-arshad/TheShoppies/master/assets/demo_images/splash.png" width="200">
+<img src="https://raw.githubusercontent.com/a-arshad/TheShoppies/master/assets/demo_images/light_nominations.png" width="200">
+<img src="https://raw.githubusercontent.com/a-arshad/TheShoppies/master/assets/demo_images/dark_nominations.png" width="200">
+<img src="https://raw.githubusercontent.com/a-arshad/TheShoppies/master/assets/demo_images/light_search.png" width="200">
+<img src="https://raw.githubusercontent.com/a-arshad/TheShoppies/master/assets/demo_images/dark_search.png" width="200">
 
 ## Installation
 
 1. Install the [React Native CLI](https://reactnative.dev/docs/environment-setup) for an Android Target OS
 2. Clone the project.
-3. Install npm packages. Run the following command in a terminal at the project root. ```npm i --legacy-peer-deps```
+3. Install npm packages. Run the following command in a terminal at the project root. 
+```
+npm i --legacy-peer-deps
+```
 4. Obtain an [OMDb API key](http://www.omdbapi.com/apikey.aspx)
-5. Add the API key to the project's environment variables. Run the following command in a terminal at the project root, but replace `XXXXXXX` with your OMDb API key from the previous step. ```echo "OMDB_KEY=XXXXXXX" > .env```
-6. Compile and run the project. Run the following command in a terminal at the project root. ```npx react-native run-android --variant=release```
+5. Add the API key to the project's environment variables. Run the following command in a terminal at the project root, but replace `XXXXXXX` with your OMDb API key from the previous step. 
+```
+echo "OMDB_KEY=XXXXXXX" > .env
+```
+6. Compile and run the project. Run the following command in a terminal at the project root. 
+```
+npx react-native run-android --variant=release
+```
  
