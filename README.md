@@ -15,10 +15,14 @@ The Shoppies is a React Native twist on the [Shopify's Fall 2021 Intern UX & Web
 ## Images
 
 <img src="https://raw.githubusercontent.com/a-arshad/TheShoppies/master/assets/demo_images/splash.png" width="200">
-<img src="https://raw.githubusercontent.com/a-arshad/TheShoppies/master/assets/demo_images/light_nominations.png" width="200">
-<img src="https://raw.githubusercontent.com/a-arshad/TheShoppies/master/assets/demo_images/dark_nominations.png" width="200">
-<img src="https://raw.githubusercontent.com/a-arshad/TheShoppies/master/assets/demo_images/light_search.png" width="200">
-<img src="https://raw.githubusercontent.com/a-arshad/TheShoppies/master/assets/demo_images/dark_search.png" width="200">
+<p float="left">
+  <img src="https://raw.githubusercontent.com/a-arshad/TheShoppies/master/assets/demo_images/light_nominations.png" width="200">
+  <img src="https://raw.githubusercontent.com/a-arshad/TheShoppies/master/assets/demo_images/dark_nominations.png" width="200">
+</p>
+<p float="left">
+  <img src="https://raw.githubusercontent.com/a-arshad/TheShoppies/master/assets/demo_images/light_search.png" width="200">
+  <img src="https://raw.githubusercontent.com/a-arshad/TheShoppies/master/assets/demo_images/dark_search.png" width="200">
+</p>
 
 ## Installation
 
