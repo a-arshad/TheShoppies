@@ -7,6 +7,7 @@ import {screenComponents, ScreenName} from './src/util/screens';
 import Nominations from './src/models/nominations';
 import {getNominees, updateNominees} from './src/util/nominationsGateway';
 import context from './src/util/context';
+import SplashScreen from 'react-native-splash-screen';
 
 const stack = createStackNavigator();
 
@@ -15,6 +16,8 @@ const App = () => {
     new Nominations(updateNominees),
   );
   const styles = useStyles();
+
+  useEffect(() => SplashScreen.hide(), []);
 
   useEffect(() => {
     const updateNominations = async () => {
