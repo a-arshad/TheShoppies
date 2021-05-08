@@ -7,7 +7,7 @@ const useStyles = () =>
       height: 1,
       width: '100%',
       margin: theme.spacing.extraTight,
-      backgroundColor: theme.colors.hairline,
+      backgroundColor: theme.colors.borderColor,
     },
   });
 

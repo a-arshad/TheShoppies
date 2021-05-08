@@ -2,7 +2,7 @@ import React, {useCallback, useState} from 'react';
 import {TextInput, TextInputProps, TouchableOpacity, View} from 'react-native';
 import {CircleCancelMajor, SearchMajor} from 'src/components/Icons/PolarisIcon';
 import useStyles from './SearchBar.modules';
-import {theme} from 'src/util/themes';
+import {isLightTheme, theme} from 'src/util/themes';
 import {debounce} from 'lodash';
 
 const SEARCH_DEBOUNCE_DELAY = 500;
@@ -36,7 +36,9 @@ const SearchBar = (props: TextInputProps) => {
         <TextInput
           ref={textInput => setTextInput(textInput)}
           style={styles.textInput}
-          placeholderTextColor={theme.colors.darkGrey}
+          placeholderTextColor={
+            isLightTheme() ? theme.colors.darkGrey : theme.colors.lightGrey
+          }
           {...props}
           onChangeText={onChangeText}
         />

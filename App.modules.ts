@@ -3,12 +3,12 @@ import {theme} from './src/util/themes';
 
 const useStyles = () =>
   StyleSheet.create({
-    theme: {
+    container: {
       flex: 1,
       paddingTop: theme.spacing.base,
       paddingHorizontal: theme.spacing.base,
-      backgroundColor: 'white',
       fontSize: theme.font.fontSizeRegular,
+      backgroundColor: theme.colors.backgroundColor,
     },
   });
 

@@ -6,7 +6,7 @@ const useStyles = () =>
     container: {
       display: 'flex',
       flexDirection: 'column',
-      backgroundColor: 'white',
+      backgroundColor: theme.colors.backgroundColor,
     },
     topBar: {
       marginVertical: theme.spacing.tight,

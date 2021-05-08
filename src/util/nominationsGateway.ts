@@ -16,9 +16,9 @@ export const updateNominees = async (nominees: Nominees) => {
 export const getNominees = async (): Promise<Map<string, MovieSummary>> => {
   try {
     const nominees = JSON.parse(
-      (await AsyncStorage.getItem(NOMINEES_KEY)) ?? '{}',
+      (await AsyncStorage.getItem(NOMINEES_KEY)) ?? 'null',
     );
-    return nominees !== {}
+    return nominees
       ? new Map<string, MovieSummary>(nominees)
       : new Map<string, MovieSummary>();
   } catch (err) {

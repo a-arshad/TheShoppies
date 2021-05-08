@@ -1,13 +1,17 @@
 import {StyleSheet} from 'react-native';
-import {theme} from 'src/util/themes';
+import {isLightTheme, theme} from 'src/util/themes';
 
 const useStyles = () =>
   StyleSheet.create({
     container: {
       borderWidth: 1,
       borderRadius: 90,
-      borderColor: theme.colors.lightGrey,
-      backgroundColor: theme.colors.lightGrey,
+      borderColor: isLightTheme()
+        ? theme.colors.lightGrey
+        : theme.colors.darkGrey,
+      backgroundColor: isLightTheme()
+        ? theme.colors.lightGrey
+        : theme.colors.darkGrey,
     },
     searchField: {
       display: 'flex',
@@ -24,7 +28,7 @@ const useStyles = () =>
     },
     textInput: {
       flexShrink: 1,
-      color: 'black',
+      color: theme.colors.textColor,
       fontSize: theme.font.fontSizeRegular,
       width: '100%',
     },

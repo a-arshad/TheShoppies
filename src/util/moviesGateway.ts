@@ -1,7 +1,8 @@
+import Config from 'react-native-config';
 import MovieSummary from 'src/models/movieSummary';
 import Nominations from '../models/nominations';
-// TODO: hide the api key in a .env file
-const API_URL = `http://www.omdbapi.com/?apikey=4e29ebc&type=movie`;
+
+const API_URL = `http://www.omdbapi.com/?apikey=${Config.OMDB_KEY}&type=movie`;
 
 interface IMovieSearchResponse {
   Response: string;

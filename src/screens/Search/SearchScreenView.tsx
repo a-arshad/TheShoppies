@@ -2,7 +2,7 @@ import React from 'react';
 import {Text, View, TouchableHighlight, RefreshControl} from 'react-native';
 import SearchBar from 'src/components/SearchBar/SearchBar';
 import MovieSummary from 'src/models/movieSummary';
-import {theme} from 'src/util/themes';
+import {isLightTheme, theme} from 'src/util/themes';
 import useStyles from './SearchScreen.modules';
 import MovieList from 'src/components/MovieList/MovieList';
 
@@ -32,7 +32,9 @@ const SearchScreenView = (props: SearchScreenViewProps) => {
         </View>
         <TouchableHighlight
           style={styles.cancelButton}
-          underlayColor={theme.colors.lightGrey}
+          underlayColor={
+            isLightTheme() ? theme.colors.lightGrey : theme.colors.darkGrey
+          }
           onPress={props.onBack}>
           <Text style={styles.cancelText}>Cancel</Text>
         </TouchableHighlight>
@@ -49,7 +51,7 @@ const SearchScreenView = (props: SearchScreenViewProps) => {
         errorMessage={props.errorMessage}
         keyExtractor={(searchResult: MovieSummary) => searchResult.id}
         onEndReached={props.loadNextPage}
-        onEndReachedThreshold={0.3}
+        onEndReachedThreshold={0.7}
       />
     </View>
   );

@@ -1,4 +1,6 @@
-// TODO: add support for dark theme
+import {Appearance} from 'react-native';
+
+export const isLightTheme = () => Appearance.getColorScheme() === 'light';
 
 export const theme = {
   colors: {
@@ -6,7 +8,9 @@ export const theme = {
     darkGrey: '#5C5F62',
     grey: '#AAAAAA',
     lightGrey: '#F2F2F2',
-    hairline: '#EDEDED',
+    borderColor: isLightTheme() ? '#E8E8E8' : '#252525',
+    textColor: isLightTheme() ? 'black' : 'white',
+    backgroundColor: isLightTheme() ? 'white' : 'black',
   },
   font: {
     fontSizeHeading: 24,

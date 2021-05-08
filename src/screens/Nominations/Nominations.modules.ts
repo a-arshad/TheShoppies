@@ -4,11 +4,10 @@ import {theme} from 'src/util/themes';
 const useStyles = () =>
   StyleSheet.create({
     container: {
-      backgroundColor: 'white',
+      backgroundColor: theme.colors.backgroundColor,
     },
     topBar: {
-      marginTop: theme.spacing.tight,
-      marginBottom: theme.spacing.tight,
+      marginVertical: theme.spacing.base,
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'space-between',
@@ -17,6 +16,7 @@ const useStyles = () =>
     title: {
       fontWeight: 'bold',
       fontSize: theme.font.fontSizeHeading,
+      color: theme.colors.textColor,
     },
   });
 

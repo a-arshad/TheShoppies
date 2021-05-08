@@ -1,5 +1,7 @@
 import {StyleSheet} from 'react-native';
 
+const ERROR_MARGIN = 75;
+
 const useStyles = () =>
   StyleSheet.create({
     container: {
@@ -8,7 +10,7 @@ const useStyles = () =>
       flexGrow: 1,
     },
     errorMessage: {
-      marginTop: 75,
+      marginTop: ERROR_MARGIN,
       textAlign: 'center',
       textAlignVertical: 'center',
       fontWeight: 'bold',
