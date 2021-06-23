@@ -27,8 +27,7 @@ const moviesFetch = async (urlParams: string) =>
     .then(async resp => {
       if (!resp.ok) {
         const msg = 'API Fetch failed with HTTP Status ' + resp.status;
-        console.error(msg);
-        throw Error();
+        throw Error(msg);
       }
       return await resp.json();
     })
@@ -42,8 +41,8 @@ export const searchMovies = async (
   page: number,
   nominations: Nominations,
 ): Promise<MovieSummary[]> =>
-  moviesFetch(`s=${searchTerm}&page=${page}`).then(
-    (movieSearchResponse: IMovieSearchResponse) => {
+  moviesFetch(`s=${searchTerm}&page=${page}`)
+    .then((movieSearchResponse: IMovieSearchResponse) => {
       if (movieSearchResponse.Response.toLowerCase() == 'true') {
         return movieSearchResponse.Search.map(
           searchResult =>
@@ -58,5 +57,7 @@ export const searchMovies = async (
       } else {
         throw Error(movieSearchResponse.Error);
       }
-    },
-  );
+    })
+    .catch(err => {
+      throw Error(err.message);
+    });

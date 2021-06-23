@@ -58,7 +58,9 @@ const SearchScreenController = (props: SearchScreenControllerProps) => {
           if (page === 1) {
             setSearchResults([]);
             setErrorMessage(
-              resp.message ?? 'An error has occurred, please try again.',
+              resp.message
+                ? resp.message
+                : 'Unable to retrieve movies, check your network settings and try again later.',
             );
           }
         })

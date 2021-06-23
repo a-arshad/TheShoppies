@@ -1,5 +1,5 @@
-import React, {Fragment, useEffect, useState} from 'react';
-import {SafeAreaView, StatusBar, View} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {SafeAreaView, StatusBar} from 'react-native';
 import useStyles from './App.modules';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
